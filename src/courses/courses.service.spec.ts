@@ -72,10 +72,10 @@ describe('CoursesService unite tests', () => {
     const createCourseDTO: CreateCourseDTO = {
       description: 'Curso de Nestjs',
       name: 'Nestjs descomplicado',
-      tags: ['Nestjs']
-    }
+      tags: ['Nestjs'],
+    };
 
-    const newCourse = await service.create(createCourseDTO)
+    const newCourse = await service.create(createCourseDTO);
 
     expect(mockCoursesRepository.save).toHaveBeenCalled();
     expect(expectOutputCourses).toStrictEqual(newCourse);
@@ -87,7 +87,7 @@ describe('CoursesService unite tests', () => {
     // @ts-expect-error defined part of methods
     service['tagsRepository'] = mockTagsRepository;
 
-    const courses = await service.findAll()
+    const courses = await service.findAll();
 
     expect(mockCoursesRepository.find).toHaveBeenCalled();
     expect(expectOutputCourses).toStrictEqual(courses);
@@ -99,7 +99,7 @@ describe('CoursesService unite tests', () => {
     // @ts-expect-error defined part of methods
     service['tagsRepository'] = mockTagsRepository;
 
-    const course = await service.findOne(id)
+    const course = await service.findOne(id);
 
     expect(mockCoursesRepository.findOne).toHaveBeenCalled();
     expect(expectOutputCourses).toStrictEqual(course);
@@ -114,10 +114,10 @@ describe('CoursesService unite tests', () => {
     const updateCourseDTO: UpdateCourseDTO = {
       description: 'Curso de Nestjs',
       name: 'Nestjs descomplicado',
-      tags: ['Nestjs']
-    }
+      tags: ['Nestjs'],
+    };
 
-    const course = await service.update(id, updateCourseDTO)
+    const course = await service.update(id, updateCourseDTO);
 
     expect(mockCoursesRepository.preload).toHaveBeenCalled();
     expect(mockCoursesRepository.save).toHaveBeenCalled();
@@ -130,7 +130,7 @@ describe('CoursesService unite tests', () => {
     // @ts-expect-error defined part of methods
     service['tagsRepository'] = mockTagsRepository;
 
-    const course = await service.remove(id)
+    const course = await service.remove(id);
 
     expect(mockCoursesRepository.findOne).toHaveBeenCalled();
     expect(mockCoursesRepository.remove).toHaveBeenCalled();
